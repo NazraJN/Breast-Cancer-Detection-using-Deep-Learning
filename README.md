@@ -1,1 +1,1 @@
-# capstone_deployment_practice
+# deployment_practice
