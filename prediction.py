@@ -11,7 +11,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load the trained model
-model = load_model('C:/Users/hp/Desktop/Moringa_practice/Deployment/baseline_model.h5')
+model = load_model(./'baseline_model.h5')
 
 def classify_image(uploaded_image):
     img = Image.open(uploaded_image).convert('L')  # Convert to grayscale
@@ -21,7 +21,22 @@ def classify_image(uploaded_image):
     img_data = img_array / 255.0  # Normalize
 
     prediction = model.predict(img_data)
-    return prediction
+    # Interpret the prediction
+    class_names = ['Normal', 'Benign', 'Malignant']
+    predicted_class_index = np.argmax(prediction)
+    predicted_class = class_names[predicted_class_index]
+    
+    # Detailed interpretation
+    if predicted_class_index == 0:
+        detailed_interpretation = 'The ultrasound appears normal.'
+    elif predicted_class_index == 1:
+        detailed_interpretation = 'The ultrasound shows benign signs.'
+    else:
+        detailed_interpretation = 'The ultrasound shows malignant signs indicative of breast cancer.'
+
+    prediction_probs = f"Prediction Probabilities: {prediction}"
+    
+    return predicted_class, prediction_probs, detailed_interpretation
 
 st.title("Deep-Learning-Based Breast Cancer Prediction System")
 uploaded_image = st.file_uploader("Upload an ultrasound image", type=["jpg", "jpeg", "png", "bmp"])
@@ -30,7 +45,6 @@ if uploaded_image:
     st.image(uploaded_image, caption='Uploaded Image.', use_column_width=True)
     st.write("")
     with st.spinner('Classifying...'):
-        # For demonstration purposes, let's simulate some processing steps
         import time
         for i in range(4):
             # simulate a portion of the processing
