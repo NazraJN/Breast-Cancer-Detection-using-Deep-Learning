@@ -62,7 +62,7 @@ if uploaded_image:
     feedback_options = ["Correct", "Incorrect"]
     feedback = st.selectbox("Was this prediction correct?", feedback_options)
     if feedback == "Incorrect":
-    correct_class = st.selectbox("Please specify the correct class:", class_names)
+        correct_class = st.selectbox("Please specify the correct class:", class_names)
 
     
 st.markdown("**DISCLAIMER**")
