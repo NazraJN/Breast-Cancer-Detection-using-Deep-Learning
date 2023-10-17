@@ -42,6 +42,7 @@ def classify_image(uploaded_image):
 st.title("Deep-Learning-Based Breast Cancer Prediction System")
 uploaded_image = st.file_uploader("Upload an ultrasound image", type=["jpg", "jpeg", "png", "bmp"])
 
+class_names = ['Normal', 'Benign', 'Malignant']
 if uploaded_image:
     st.image(uploaded_image, caption='Uploaded Image.', use_column_width=True)
 
@@ -58,7 +59,7 @@ if uploaded_image:
     st.write(f"Prediction: {predicted_class}")
     st.write(detailed_interpretation)
 
-    feedback_options = ["Correct", "Incorrect"]
+    feedback_options = ["Yes", "No"]
     feedback = st.selectbox("Was this prediction correct?", feedback_options)
     if feedback == "Incorrect":
         correct_class = st.selectbox("Please specify the correct class:", class_names)
