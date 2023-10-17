@@ -21,6 +21,7 @@ def classify_image(uploaded_image):
     img_data = img_array / 255.0  # Normalize
 
     prediction = model.predict(img_data)
+    
     # Interpret the prediction
     class_names = ['Normal', 'Benign', 'Malignant']
     predicted_class_index = np.argmax(prediction)
@@ -55,6 +56,11 @@ if uploaded_image:
     predicted_class = class_names[np.argmax(prediction)]
     
     st.write(f"Prediction: {predicted_class}")
+    st.write(detailed_interpretation)
+
+    feedback_options = ["Correct", "Incorrect"]
+    feedback = st.selectbox("Was this prediction correct?", feedback_options)
+
     
 st.markdown("**DISCLAIMER**")
 st.markdown("""
