@@ -49,10 +49,10 @@ if uploaded_image:
     status = st.empty()
     progress_bar = st.progress(0)
     status.text('Classifying...')
-        for i in range(4):
-            # simulate a portion of the processing
-            time.sleep(0.5)
-            progress_bar.progress((i+1)/4)
+    for i in range(4):
+        # simulate a portion of the processing
+        time.sleep(0.5)
+        progress_bar.progress((i+1)/4)
 
     predicted_class, prediction_probs, detailed_interpretation = classify_image(uploaded_image)
     
