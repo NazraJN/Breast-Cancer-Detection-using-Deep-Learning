@@ -11,7 +11,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 
 # Load the trained model
-model = load_model(./'baseline_model.h5')
+model = load_model("baseline_model.h5")
 
 def classify_image(uploaded_image):
     img = Image.open(uploaded_image).convert('L')  # Convert to grayscale
