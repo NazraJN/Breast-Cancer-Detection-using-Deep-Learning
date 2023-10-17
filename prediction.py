@@ -44,16 +44,17 @@ uploaded_image = st.file_uploader("Upload an ultrasound image", type=["jpg", "jp
 
 if uploaded_image:
     st.image(uploaded_image, caption='Uploaded Image.', use_column_width=True)
-    st.write("")
-    with st.spinner('Classifying...'):
-        import time
+
+    # Show "Classifying..." with a loading bar
+    status = st.empty()
+    progress_bar = st.progress(0)
+    status.text('Classifying...')
         for i in range(4):
             # simulate a portion of the processing
             time.sleep(0.5)
-        
-    prediction = classify_image(uploaded_image)
-    class_names = ['Normal', 'Benign', 'Malignant']
-    predicted_class = class_names[np.argmax(prediction)]
+            progress_bar.progress((i+1)/4)
+
+    predicted_class, prediction_probs, detailed_interpretation = classify_image(uploaded_image)
     
     st.write(f"Prediction: {predicted_class}")
     st.write(detailed_interpretation)
