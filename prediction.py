@@ -6,22 +6,22 @@ Created on Mon Oct 16 11:10:02 2023
 """
 
 import streamlit as st
-#from PIL import Image
-#import numpy as np
-#from tensorflow.keras.models import load_model
+from PIL import Image
+import numpy as np
+from tensorflow.keras.models import load_model
 
 # Load the trained model
-#model = load_model('C:/Users/hp/Desktop/Moringa_practice/Deployment/baseline_model.h5')
+model = load_model('C:/Users/hp/Desktop/Moringa_practice/Deployment/baseline_model.h5')
 
-#def classify_image(uploaded_image):
-    #img = Image.open(uploaded_image).convert('L')  # Convert to grayscale
-    #img = img.resize((224, 224))
-    #img_array = np.array(img)
-    #img_array = np.expand_dims(img_array, axis=[0, -1])
-    #img_data = img_array / 255.0  # Normalize
+def classify_image(uploaded_image):
+    img = Image.open(uploaded_image).convert('L')  # Convert to grayscale
+    img = img.resize((224, 224))
+    img_array = np.array(img)
+    img_array = np.expand_dims(img_array, axis=[0, -1])
+    img_data = img_array / 255.0  # Normalize
 
-    #prediction = model.predict(img_data)
-    #return prediction
+    prediction = model.predict(img_data)
+    return prediction
 
 st.title("Deep-Learning-Based Breast Cancer Prediction System")
 uploaded_image = st.file_uploader("Upload an ultrasound image", type=["jpg", "jpeg", "png", "bmp"])
@@ -36,11 +36,11 @@ if uploaded_image:
             # simulate a portion of the processing
             time.sleep(0.5)
         
-    #prediction = classify_image(uploaded_image)
-    #class_names = ['Normal', 'Benign', 'Malignant']
-    #predicted_class = class_names[np.argmax(prediction)]
+    prediction = classify_image(uploaded_image)
+    class_names = ['Normal', 'Benign', 'Malignant']
+    predicted_class = class_names[np.argmax(prediction)]
     
-    #st.write(f"Prediction: {predicted_class}")
+    st.write(f"Prediction: {predicted_class}")
     
 st.markdown("**DISCLAIMER**")
 st.markdown("""
