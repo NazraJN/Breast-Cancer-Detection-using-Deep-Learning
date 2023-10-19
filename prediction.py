@@ -79,7 +79,7 @@ if uploaded_image:
     
 st.markdown("**DISCLAIMER**")
 st.markdown("""
-Predictions provided by this tool should not be used as the sole basis for medical decision-making or diagnosis. Professionals are advise to exercise their expertise, corroborate findings from multiple sources, and always prioritise their clinical judgement when making decisions based on predictions from this tool. 
+Predictions provided by this tool should not be used as the sole basis for medical decision-making or diagnosis. Professionals are advised to exercise their expertise, corroborate findings from multiple sources, and always prioritise their clinical judgement when making decisions based on predictions from this tool. 
 The developers, contributors, and stakeholders of this application are not responsible for any claims, loss or damage arising from its use.
 """)
 
