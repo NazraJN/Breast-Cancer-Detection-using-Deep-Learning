@@ -54,6 +54,10 @@ if uploaded_image:
         # simulate a portion of the processing
         progress_bar.progress((i+1)/4)
 
+    # Clear the status message after classification
+    status.text('')
+    progress_bar.empty()
+
     predicted_class, prediction_probs, detailed_interpretation = classify_image(uploaded_image)
     
     st.write(f"Prediction: {predicted_class}")
