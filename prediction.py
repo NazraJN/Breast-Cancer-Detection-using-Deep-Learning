@@ -38,11 +38,6 @@ def classify_image(uploaded_image):
     prediction_probs = f"Prediction Probabilities: {prediction}"
     
     return predicted_class, prediction_probs, detailed_interpretation
-    
-def save_feedback(prediction, correct_class):
-    with open('feedback.csv', mode='a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([prediction, correct_class])
         
 st.title("Deep-Learning-Based Breast Cancer Prediction System")
 uploaded_image = st.file_uploader("Upload an ultrasound image", type=["jpg", "jpeg", "png", "bmp"])
