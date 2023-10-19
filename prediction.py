@@ -38,7 +38,12 @@ def classify_image(uploaded_image):
     prediction_probs = f"Prediction Probabilities: {prediction}"
     
     return predicted_class, prediction_probs, detailed_interpretation
-
+    
+def save_feedback(prediction, correct_class):
+    with open('feedback.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([prediction, correct_class])
+        
 st.title("Deep-Learning-Based Breast Cancer Prediction System")
 uploaded_image = st.file_uploader("Upload an ultrasound image", type=["jpg", "jpeg", "png", "bmp"])
 
@@ -65,14 +70,16 @@ if uploaded_image:
 
     feedback_options = ["Yes", "No"]
     feedback = st.selectbox("Was this prediction correct?", feedback_options)
-    if feedback == "Incorrect":
+    if feedback == "No":
         correct_class = st.selectbox("Please specify the correct class:", class_names)
+        if st.button('Submit Feedback'):
+            save_feedback(predicted_class, correct_class)
+            st.write('Thank you for your feedback!')
 
     
 st.markdown("**DISCLAIMER**")
 st.markdown("""
-This application is designed for educational and informational purposes only. The predictions provided by this tool should NOT be used as a substitute for professional medical advice or diagnosis. Always consult your physician or another qualified healthcare provider with any questions you may have regarding a medical condition. Do not disregard professional medical advice or delay in seeking it because of something you have read or interpreted from this application's results.
-
-Relying on this application for medical decision-making is strictly at your own risk. The developers, contributors, and stakeholders associated with this application are not responsible for any claim, loss, or damage arising from the use of this tool.
+Predictions provided by this tool should not be used as the sole basis for medical decision-making or diagnosis. Professionals are advise to exercise their expertise, corroborate findings from multiple sources, and always prioritise their clinical judgement when making decisions based on predictions from this tool. 
+The developers, contributors, and stakeholders of this application are not responsible for any claims, loss or damage arising from its use.
 """)
 
