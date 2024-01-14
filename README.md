@@ -1,6 +1,5 @@
 # Capstone-Project
 # Breast Cancer Prediction using Deep Learning
-![Picture1](https://github.com/TonyN2060/Capstone-Project/assets/128211953/619cebf4-c8b2-46d1-bed8-4017ffef1b31)
 
 ## 1. Business Overview
 Breast cancer ranks as the most common cancer globally and the second leading cause of cancer-related deaths. According to the World Health Organization (WHO), breast cancer is the primary cause of death among women aged 45-55 years with, affecting 1 in 8 women. Early detection and timely intervention play a pivotal role in the prognosis of breast cancer. When detected early, and if adequate diagnosis and treatment are available, the chances of survival increase significantly. Thus, the importance of early detection cannot be overstated, as it can lead to more effective treatments, reduce the need for aggressive intervention procedures, and substantially lower breast-cancer-related deaths.
